@@ -90,3 +90,12 @@ export const ContainerIcons = styled.div`
     gap: 24px;
     margin-right: 24px;
 `
+
+
+export const MainContainer = styled.div`
+  display: flex;
+  flex: 1;
+
+  overflow: hidden;  
+  width: 100%;
+`

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
   display: flex;
   flex-direction: column;  
-  width: 240px;
+  min-width: 240px;
   max-height: 100%;
 
   overflow-y: auto;
@@ -25,16 +25,6 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     list-style: none;
-  }
-
-  a {    
-    display: flex;
-    height: 40px;
-
-    align-items: center;    
-
-    color: inherit;
-    text-decoration: none;
   }
 
   img {

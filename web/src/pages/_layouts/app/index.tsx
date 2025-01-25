@@ -1,18 +1,26 @@
-import { Outlet } from 'react-router-dom'
-import { HeaderContainer, HeaderContent, ContainerLeft, IconContainer, LogoContainer, ContainerSearch, CenterContainer, ContainerRight, ContainerIcons } from './styles'
+import { Link, Outlet } from 'react-router-dom'
+import { HeaderContainer, HeaderContent, ContainerLeft, IconContainer, LogoContainer, ContainerSearch, CenterContainer, ContainerRight, ContainerIcons, MainContainer } from './styles'
+import { SideMenu } from '../../../components/SideMenu'
+import { useState } from 'react'
 
 export function AppLayout() {
+  const [isSideMenuVisible, setIsSideMenuVisible] = useState(true)
+
+  const toggleSideMenu = () => {
+    setIsSideMenuVisible((prev) => !prev)
+  }
+
   return (
     <>
       <HeaderContainer>
         <HeaderContent>
           <ContainerLeft>
-            <IconContainer>
+            <IconContainer onClick={toggleSideMenu} style={{cursor: 'pointer'}}>
               <img src="/hamburger_menu_icon.png" alt="Menu" />
             </IconContainer>
 
             <LogoContainer>
-              <img src="/logo.png" alt="Logo" />
+              <Link to={'/'}><img src="/logo.png" alt="Logo" /></Link>
             </LogoContainer>
           </ContainerLeft>
 
@@ -46,8 +54,10 @@ export function AppLayout() {
         </HeaderContent>
 
       </HeaderContainer>
-      <Outlet />
-
+      <MainContainer>
+        {isSideMenuVisible && <SideMenu />}
+        <Outlet />
+      </MainContainer>
     </>
   )
 }
